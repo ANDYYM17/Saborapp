@@ -85,13 +85,13 @@ class PlatosAdapter(
                 binding.tvDisponiblePlato.setTextColor(
                     ContextCompat.getColor(context, R.color.status_libre)
                 )
-                binding.tvDisponiblePlato.setBackgroundResource(R.drawable.bg_role_admin)
+                binding.tvDisponiblePlato.setBackgroundResource(R.drawable.bg_status_libre)
             } else {
                 binding.tvDisponiblePlato.text = context.getString(R.string.status_no_disponible)
                 binding.tvDisponiblePlato.setTextColor(
-                    ContextCompat.getColor(context, R.color.error)
+                    ContextCompat.getColor(context, R.color.status_ocupada)
                 )
-                binding.tvDisponiblePlato.setBackgroundResource(R.drawable.bg_role_mozo)
+                binding.tvDisponiblePlato.setBackgroundResource(R.drawable.bg_status_ocupada)
             }
 
             binding.root.setOnClickListener {

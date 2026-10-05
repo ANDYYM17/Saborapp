@@ -96,19 +96,30 @@ class ReportesActivity : AppCompatActivity() {
     private fun crearFilaTopPlato(posicion: Int, plato: TopPlato): View {
         val row = LinearLayout(this).apply {
             orientation = LinearLayout.HORIZONTAL
-            setPadding(0, 10, 0, 10)
+            gravity = android.view.Gravity.CENTER_VERTICAL
+            setPadding(24, 16, 24, 16)
             layoutParams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
-            )
+            ).apply {
+                setMargins(0, 6, 0, 6)
+            }
+            setBackgroundResource(R.drawable.bg_role_admin)
+        }
+
+        val medal = when (posicion) {
+            1 -> "🥇 #1"
+            2 -> "🥈 #2"
+            3 -> "🥉 #3"
+            else -> "#$posicion"
         }
 
         val tvBadge = TextView(this).apply {
-            text = "#$posicion"
-            textSize = 14f
+            text = medal
+            textSize = 13f
             setTextColor(getColor(R.color.primary))
             setTypeface(typeface, android.graphics.Typeface.BOLD)
-            setPadding(0, 0, 12, 0)
+            setPadding(0, 0, 16, 0)
         }
 
         val infoLayout = LinearLayout(this).apply {
@@ -134,7 +145,7 @@ class ReportesActivity : AppCompatActivity() {
 
         val tvMonto = TextView(this).apply {
             text = String.format(Locale.getDefault(), "S/ %.2f", plato.totalMonto)
-            textSize = 14f
+            textSize = 15f
             setTextColor(getColor(R.color.primary))
             setTypeface(typeface, android.graphics.Typeface.BOLD)
         }
@@ -149,11 +160,15 @@ class ReportesActivity : AppCompatActivity() {
     private fun crearFilaVentaMesa(mesa: VentaMesa): View {
         val row = LinearLayout(this).apply {
             orientation = LinearLayout.HORIZONTAL
-            setPadding(0, 10, 0, 10)
+            gravity = android.view.Gravity.CENTER_VERTICAL
+            setPadding(24, 16, 24, 16)
             layoutParams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
-            )
+            ).apply {
+                setMargins(0, 6, 0, 6)
+            }
+            setBackgroundResource(R.drawable.bg_role_mozo)
         }
 
         val infoLayout = LinearLayout(this).apply {
@@ -179,8 +194,8 @@ class ReportesActivity : AppCompatActivity() {
 
         val tvTotal = TextView(this).apply {
             text = String.format(Locale.getDefault(), "S/ %.2f", mesa.totalMesa)
-            textSize = 14f
-            setTextColor(getColor(R.color.primary))
+            textSize = 15f
+            setTextColor(getColor(R.color.role_mozo_text))
             setTypeface(typeface, android.graphics.Typeface.BOLD)
         }
 

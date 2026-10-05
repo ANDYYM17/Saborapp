@@ -169,11 +169,11 @@
                         android:layout_weight="1"
                         android:minHeight="52dp"
                         android:text="@string/btn_compartir_whatsapp"
-                        android:textColor="@color/primary"
+                        android:textColor="@color/whatsapp_green"
                         app:cornerRadius="12dp"
                         app:icon="@drawable/ic_share"
-                        app:iconTint="@color/primary"
-                        app:strokeColor="@color/primary" />
+                        app:iconTint="@color/whatsapp_green"
+                        app:strokeColor="@color/whatsapp_green" />
                 </LinearLayout>
 
             </LinearLayout>

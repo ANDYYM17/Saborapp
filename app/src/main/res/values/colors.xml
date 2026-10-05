@@ -14,29 +14,45 @@
     <color name="secondary_container">#FFEDEA</color>
     <color name="on_secondary">#FFFFFF</color>
 
-    <color name="background">#FFF8F5</color>
+    <color name="background">#FBF8F6</color>
     <color name="surface">#FFFFFF</color>
     <color name="surface_variant">#F5EBE6</color>
-    <color name="card_stroke">#FFCCBC</color>
+    <color name="card_stroke">#F0E0D6</color>
+    <color name="card_stroke_active">#FFCCBC</color>
 
     <!-- Textos -->
-    <color name="text_primary">#212121</color>
-    <color name="text_secondary">#666666</color>
-    <color name="text_hint">#9E9E9E</color>
+    <color name="text_primary">#1F2937</color>
+    <color name="text_secondary">#6B7280</color>
+    <color name="text_hint">#9CA3AF</color>
 
     <!-- Badges de Rol -->
-    <color name="role_admin_bg">#FFE8EC</color>
-    <color name="role_admin_text">#C62828</color>
-    <color name="role_mozo_bg">#E3F2FD</color>
-    <color name="role_mozo_text">#0D47A1</color>
+    <color name="role_admin_bg">#FEE2E2</color>
+    <color name="role_admin_text">#DC2626</color>
+    <color name="role_mozo_bg">#DBEAFE</color>
+    <color name="role_mozo_text">#1D4ED8</color>
 
     <!-- Estados y Alertas -->
-    <color name="status_libre">#2E7D32</color>
-    <color name="status_libre_bg">#E8F5E9</color>
-    <color name="status_ocupada">#C62828</color>
-    <color name="status_ocupada_bg">#FFEBEE</color>
+    <color name="status_libre">#16A34A</color>
+    <color name="status_libre_bg">#DCFCE7</color>
+    <color name="status_libre_border">#86EFAC</color>
+    <color name="status_ocupada">#DC2626</color>
+    <color name="status_ocupada_bg">#FEE2E2</color>
+    <color name="status_ocupada_border">#FCA5A5</color>
 
-    <color name="error">#D32F2F</color>
+    <!-- WhatsApp & Acciones -->
+    <color name="whatsapp_green">#25D366</color>
+    <color name="whatsapp_green_dark">#128C7E</color>
+    <color name="whatsapp_bg">#E8F8F0</color>
+
+    <!-- Medallas Ranking -->
+    <color name="rank_gold">#D97706</color>
+    <color name="rank_gold_bg">#FEF3C7</color>
+    <color name="rank_silver">#4B5563</color>
+    <color name="rank_silver_bg">#E5E7EB</color>
+    <color name="rank_bronze">#92400E</color>
+    <color name="rank_bronze_bg">#FFEDD5</color>
+
+    <color name="error">#EF4444</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>

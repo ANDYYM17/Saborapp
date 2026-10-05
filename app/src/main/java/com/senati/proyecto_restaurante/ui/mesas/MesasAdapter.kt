@@ -47,12 +47,14 @@ class MesasAdapter(
                 binding.tvEstadoMesa.setTextColor(
                     ContextCompat.getColor(context, R.color.status_libre)
                 )
-                binding.tvEstadoMesa.setBackgroundResource(R.drawable.bg_role_admin)
+                binding.tvEstadoMesa.setBackgroundResource(R.drawable.bg_status_libre)
+                binding.ivMesaIcon.setColorFilter(ContextCompat.getColor(context, R.color.status_libre))
             } else {
                 binding.tvEstadoMesa.setTextColor(
                     ContextCompat.getColor(context, R.color.status_ocupada)
                 )
-                binding.tvEstadoMesa.setBackgroundResource(R.drawable.bg_role_mozo)
+                binding.tvEstadoMesa.setBackgroundResource(R.drawable.bg_status_ocupada)
+                binding.ivMesaIcon.setColorFilter(ContextCompat.getColor(context, R.color.status_ocupada))
             }
 
             binding.root.setOnClickListener {
