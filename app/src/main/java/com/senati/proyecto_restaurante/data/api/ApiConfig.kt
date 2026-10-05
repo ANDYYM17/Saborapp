@@ -11,8 +11,9 @@ object ApiConfig {
     // Lista de endpoints candidatos por si el emulador usa puente de red o IP local
     val CANDIDATE_URLS = listOf(
         "http://10.0.2.2/saborapp_api/",
-        "http://192.168.106.57/saborapp_api/",
         "http://192.168.10.110/saborapp_api/",
+        "http://192.168.106.159/saborapp_api/",
+        "http://192.168.106.57/saborapp_api/",
         "http://127.0.0.1/saborapp_api/"
     )
     
