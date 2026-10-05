@@ -1,4 +1,4 @@
-# 📱 SaborApp — Sistema Integral de Gestión de Restaurante
+#  SaborApp — Sistema Integral de Gestión de Restaurante
 
 <p align="center">
   <b>Pollería "El Buen Sabor"</b><br>
@@ -7,7 +7,7 @@
 
 ---
 
-## 📌 Resumen de Sprints y Cobertura Scrum
+##  Resumen de Sprints y Cobertura Scrum
 
 | Sprint | Historias de Usuario | Puntos | Estado | Objetivo |
 | :--- | :--- | :---: | :---: | :--- |
@@ -18,7 +18,7 @@
 
 ---
 
-## 🗄️ Base de Datos (`saborapp` en MySQL / phpMyAdmin)
+##  Base de Datos (`saborapp` en MySQL / phpMyAdmin)
 
 La base de datos se aloja en MySQL mediante **XAMPP**:
 - **Host:** `localhost:3306` (o IP local de la red)
@@ -35,7 +35,7 @@ La base de datos se aloja en MySQL mediante **XAMPP**:
 
 ---
 
-## 🚀 Endpoints Backend REST API (`/saborapp_api/`)
+##  Endpoints Backend REST API (`/saborapp_api/`)
 
 - **Autenticación (HU-04 / HU-12):**
   - `POST /auth/login.php` -> Validación en tiempo real contra tabla `usuario`.
@@ -56,7 +56,7 @@ La base de datos se aloja en MySQL mediante **XAMPP**:
 
 ---
 
-## 👥 Credenciales de Acceso
+##  Credenciales de Acceso
 
 | Usuario | Contraseña | Rol | Acceso a Módulos |
 | :--- | :--- | :--- | :--- |
@@ -65,7 +65,7 @@ La base de datos se aloja en MySQL mediante **XAMPP**:
 
 ---
 
-## 📦 Compilación y Generación de APKs (HU-12)
+##  Compilación y Generación de APKs (HU-12)
 
 - **APK Debug:** `app/build/outputs/apk/debug/app-debug.apk`
 - **APK Release:** `app/build/outputs/apk/release/app-release-unsigned.apk`
@@ -81,10 +81,8 @@ Comandos de compilación Gradle:
 
 ---
 
-## 🌿 Ramas Git del Proyecto
+##  Ramas Git del Proyecto
 
 - `main` -> Versión final consolidada y estable.
 - `sprint1` -> Entregable Sprint 1 (Prototipos y navegación).
 - `sprint2` -> Entregable Sprint 2 (Persistencia MySQL, login y listados).
-- `sprint3` -> Entregable Sprint 3 (Edición de platos, toma de pedidos y cierre de cuentas).
-- `sprint4` -> Entregable Sprint 4 (Reportes, WhatsApp, sesión persistente y Release APK).
