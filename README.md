@@ -1,39 +1,27 @@
-# 🍗 SaborApp — Pollería El Buen Sabor
+# SaborApp — Pollería El Buen Sabor 🍗
 
-Aplicación móvil nativa en **Android (Kotlin)** para la gestión integral de pedidos, mesas, carta de platos y reportes en el restaurante / pollería **El Buen Sabor**.
+Aplicación móvil nativa en Android (Kotlin) para la gestión inteligente de pedidos, mesas, carta y reportes de un restaurante/pollería.
 
 ---
 
-## 🚀 Arquitectura y Tecnologías
+## 🚀 Sprint 1: App Navegable & Infraestructura Base
+- **Base de Datos MySQL (XAMPP):** Script SQL con 5 tablas (`usuario`, `plato`, `mesa`, `pedido`, `detalle_pedido`).
+- **Backend REST API:** Endpoints en PHP (`saborapp_api`).
+- **HU-01 (Login):** Validaciones en tiempo real, toggle de visibilidad de contraseña y control de acceso.
+- **HU-02 (Menú Principal & Navegación):** Tarjetas interactivas con control de roles (`ADMIN` vs `MOZO`).
+- **HU-03 (Identidad Visual):** Paleta cálida (Naranja/Rojo), tema Material 3, ViewBinding y recursos externalizados.
+
+---
+
+## 👥 Credenciales de Prueba
+- **Administrador:** `admin` / `1234` (Rol: `ADMIN` - Acceso completo)
+- **Mozo:** `mozo1` / `1234` (Rol: `MOZO` - Reportes restringidos)
+
+---
+
+## 🛠️ Tecnologías
 - **Lenguaje:** Kotlin
-- **Plataforma:** Android Nativo (SDK 24+)
-- **UI:** Material Components + XML + ViewBinding
-- **Concurrencia:** Kotlin Coroutines & Lifecycle KTX
-- **Networking:** Retrofit 2 + Gson Converter + OkHttp Logging Interceptor
-- **Base de Datos:** MySQL (XAMPP / phpMyAdmin)
-- **Backend API:** PHP REST API (PDO)
-
----
-
-## 📁 Estructura del Repositorio
-```
-Saborapp/
-├── app/                  # Código fuente de la aplicación Android
-├── backend_api/          # Endpoints REST API en PHP para XAMPP
-├── database/             # Script SQL con DDL y datos iniciales (saborapp.sql)
-└── README.md
-```
-
----
-
-## 👥 Usuarios de Demostración (Sprint 1)
-- **Administrador:** `usuario: admin` / `clave: 1234` (Rol: `ADMIN`)
-- **Mozo:** `usuario: mozo1` / `clave: 1234` (Rol: `MOZO`)
-
----
-
-## 📌 Sprints del Proyecto
-- [x] **Sprint 1:** App navegable (Login validado con MySQL, Menú principal con roles ADMIN/MOZO, Identidad visual naranja/rojo y pantallas base).
-- [ ] **Sprint 2:** Gestión de Platos (CRUD completo y carta).
-- [ ] **Sprint 3:** Gestión de Mesas y Toma de Pedidos.
-- [ ] **Sprint 4:** Cierre de cuenta, Reportes y Compartir por WhatsApp.
+- **Arquitectura:** MVVM ligero / Repository Pattern
+- **UI:** XML + ViewBinding + Material Components
+- **Red:** Retrofit 2 + OkHttp + Coroutines
+- **Base de datos:** MySQL (XAMPP / phpMyAdmin)
