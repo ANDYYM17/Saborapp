@@ -1,10 +1,10 @@
-# 🍗 SaborApp — Pollería El Buen Sabor
+#  SaborApp — Pollería El Buen Sabor
 
 Aplicación móvil nativa para Android desarrollada en **Kotlin** para la gestión integral de pedidos, mesas, carta de platos y reportes de un restaurante/pollería.
 
 ---
 
-## 📌 Tecnologías Utilizadas
+##  Tecnologías Utilizadas
 
 - **Lenguaje:** Kotlin
 - **Plataforma:** Android Nativo (minSdk 24, targetSdk 37)
@@ -16,7 +16,7 @@ Aplicación móvil nativa para Android desarrollada en **Kotlin** para la gesti�
 
 ---
 
-## 🚀 Sprint 1 — App Navegable y Autenticación
+##  Sprint 1 — App Navegable y Autenticación
 
 ### Objetivos Logrados:
 1. **Infraestructura de Base de Datos:**
@@ -42,7 +42,7 @@ Aplicación móvil nativa para Android desarrollada en **Kotlin** para la gesti�
 
 ---
 
-## 🛠️ Configuración y Despliegue Local
+##  Configuración y Despliegue Local
 
 1. Iniciar **Apache** y **MySQL** desde el Panel de Control de **XAMPP**.
 2. Crear la base de datos `saborapp` e importar el archivo `database/saborapp.sql`.
