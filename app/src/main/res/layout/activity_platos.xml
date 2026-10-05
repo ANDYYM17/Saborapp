@@ -26,6 +26,31 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+        <!-- Campo de Búsqueda (HU-07) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilBuscarPlato"
+            style="@style/Widget.SaborApp.TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginTop="8dp"
+            android:hint="@string/hint_buscar_platos"
+            app:endIconMode="clear_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:startIconDrawable="@drawable/ic_search"
+            app:startIconTint="@color/primary">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etBuscarPlato"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textColor="@color/text_primary" />
+        </com.google.android.material.textfield.TextInputLayout>
+
         <!-- Barra de Filtros por Categoría -->
         <HorizontalScrollView
             android:id="@+id/hsvFilters"
@@ -33,11 +58,11 @@
             android:layout_height="wrap_content"
             android:clipToPadding="false"
             android:paddingHorizontal="12dp"
-            android:paddingVertical="8dp"
+            android:paddingVertical="6dp"
             android:scrollbars="none"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/tilBuscarPlato">
 
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/chipGroupCategorias"

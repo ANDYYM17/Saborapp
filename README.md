@@ -1,79 +1,90 @@
-# 🍗 SaborApp — Pollería El Buen Sabor
+# 📱 SaborApp — Sistema Integral de Gestión de Restaurante
 
-Aplicación móvil nativa para Android desarrollada en **Kotlin** para la gestión integral de un restaurante/pollería (carta de platos, mesas, pedidos, reportes y autenticación con control de roles).
-
----
-
-## 📌 Tecnologías Utilizadas
-
-- **Lenguaje:** Kotlin
-- **Plataforma:** Android Nativo (minSdk 24, targetSdk 37)
-- **Interfaz Gráfica:** XML + Material Components 3 + ViewBinding
-- **Arquitectura:** MVVM Ligero / Repository Pattern con Kotlin Coroutines
-- **Conectividad & Red:** Retrofit 2 + Gson Converter + OkHttp Logging Interceptor
-- **Base de Datos:** MySQL administrado mediante XAMPP / phpMyAdmin
-- **Backend:** REST API en PHP (PDO con soporte JSON)
+<p align="center">
+  <b>Pollería "El Buen Sabor"</b><br>
+  Aplicación Android Nativa (Kotlin) conectada con Backend REST PHP y Base de Datos MySQL (XAMPP).
+</p>
 
 ---
 
-## 🚀 SPRINT 1 — Infraestructura, Login y Menú Navegable
+## 📌 Resumen de Sprints y Cobertura Scrum
 
-### Historias de Usuario:
-- **HU-01 (Login):**
-  - Validación de campos vacíos en tiempo real (`TextInputLayout`).
-  - Autenticación asíncrona y bloqueo de retroceso al Login tras iniciar sesión.
-  - Ocultamiento de contraseña con toggle interactivo (ojo).
-- **HU-02 (Menú Principal y Navegación):**
-  - Tarjetas interactivas para: Platos, Mesas, Pedidos, Reportes y Salir.
-  - Control de visibilidad por roles: el rol `MOZO` no visualiza `Reportes`, mientras que `ADMIN` tiene acceso total.
-  - Cierre de sesión seguro con `SessionManager`.
-- **HU-03 (Identidad Visual):**
-  - Paleta corporativa cálida (Naranja `#E65100` y Rojo `#D32F2F`).
-  - Iconografía y logo temático de pollería.
-  - 100% de textos centralizados en `strings.xml`.
+| Sprint | Historias de Usuario | Puntos | Estado | Objetivo |
+| :--- | :--- | :---: | :---: | :--- |
+| **Sprint 1** | **HU-01**, **HU-02**, **HU-03** | 8 | ✅ Validado | Prototipo visual, navegación entre módulos y control de roles (`ADMIN` / `MOZO`). |
+| **Sprint 2** | **HU-04**, **HU-05**, **HU-06** | 11 | ✅ Completado | Persistencia real en MySQL: Login real, CRUD platos (registro y listado), registro y grilla de mesas. |
+| **Sprint 3** | **HU-07**, **HU-08**, **HU-09** | 16 | ✅ Completado | Edición/eliminación y búsqueda en tiempo real de platos; toma de pedidos por mesa; detalle y cierre transaccional de cuentas. |
+| **Sprint 4** | **HU-10**, **HU-11**, **HU-12** | 14 | ✅ Completado | Reportes de ventas (Venta del día, Top 5 platos, Ventas por mesa); compartir cuenta por WhatsApp; sesión recordada y APK Release. |
 
 ---
 
-## 🚀 SPRINT 2 — Datos Reales: Platos, Mesas y Login contra MySQL
+## 🗄️ Base de Datos (`saborapp` en MySQL / phpMyAdmin)
 
-### Historias de Usuario:
-- **HU-04 (Base de Datos y Login Real):**
-  - Autenticación 100% real consultando la tabla `usuario` en la base de datos `saborapp` de MySQL.
-  - Usuarios iniciales:
-    - `admin` / `1234` (Rol: `ADMIN`)
-    - `mozo1` / `1234` (Rol: `MOZO`)
-- **HU-05 (Registrar y Listar Platos):**
-  - Listado de la carta en `RecyclerView` ordenado por **Categoría** y **Nombre**.
-  - **Filtro interactivo en tiempo real** por categorías: *Todos, Entradas, Fondos, Bebidas, Postres*.
-  - Formulario de registro (`FormularioPlatoActivity`):
-    - Validación de nombre y precio obligatorios.
-    - Validación de precio `> 0` (*"Precio inválido"*).
-    - Selección de categoría mediante Spinner.
-    - Persistencia en MySQL (`plato`).
-- **HU-06 (Registrar y Listar Mesas):**
-  - Listado de mesas en `RecyclerView` con `GridLayoutManager` de **3 columnas**.
-  - Tarjetas con icono, número de mesa, capacidad y badge de estado (`LIBRE` / `OCUPADA`).
-  - Diálogo de registro de mesas:
-    - Validación de número duplicado (*"La mesa ya existe"*).
-    - Validación de capacidad permitida entre **1 y 12 personas** (*"Capacidad inválida"*).
-    - Estado inicial automático `LIBRE`.
-    - Persistencia en MySQL (`mesa`).
+La base de datos se aloja en MySQL mediante **XAMPP**:
+- **Host:** `localhost:3306` (o IP local de la red)
+- **Base de Datos:** `saborapp`
+- **Usuario:** `root`
+- **Contraseña:** *(vacía)*
+
+### Tablas y Estructura Relacional
+1. **`usuario`**: `id` (PK, AI), `usuario` (UNIQUE), `clave`, `rol` (`ADMIN` | `MOZO`).
+2. **`plato`**: `id` (PK, AI), `nombre`, `categoria`, `precio` (DECIMAL), `disponible` (0/1).
+3. **`mesa`**: `id` (PK, AI), `numero` (UNIQUE), `capacidad` (1-12), `estado` (`LIBRE` | `OCUPADA`).
+4. **`pedido`**: `id` (PK, AI), `id_mesa` (FK -> mesa.id), `fecha` (DATETIME), `estado` (`ABIERTO` | `CERRADO`), `total` (DECIMAL).
+5. **`detalle_pedido`**: `id` (PK, AI), `id_pedido` (FK -> pedido.id ON DELETE CASCADE), `id_plato` (FK -> plato.id), `cantidad`, `precio_unit` (DECIMAL snapshot), `subtotal` (DECIMAL).
 
 ---
 
-## 🗄️ Modelo de Base de Datos (`saborapp`)
+## 🚀 Endpoints Backend REST API (`/saborapp_api/`)
 
-1. **`usuario`**: `id` (PK AUTO_INCREMENT), `usuario` (UNIQUE), `clave`, `rol` (`ADMIN` | `MOZO`), `fecha_creacion`.
-2. **`plato`**: `id` (PK AUTO_INCREMENT), `nombre`, `categoria`, `precio` (> 0), `disponible`, `fecha_creacion`.
-3. **`mesa`**: `id` (PK AUTO_INCREMENT), `numero` (UNIQUE), `capacidad`, `estado` (`LIBRE` | `OCUPADA`), `fecha_creacion`.
-4. **`pedido`**: `id` (PK AUTO_INCREMENT), `id_mesa` (FK), `fecha`, `estado` (`ABIERTO` | `CERRADO`), `total`.
-5. **`detalle_pedido`**: `id` (PK AUTO_INCREMENT), `id_pedido` (FK CASCADE), `id_plato` (FK), `cantidad`, `precio_unit`, `subtotal`.
+- **Autenticación (HU-04 / HU-12):**
+  - `POST /auth/login.php` -> Validación en tiempo real contra tabla `usuario`.
+- **Platos (HU-05 / HU-07):**
+  - `GET /platos/listar.php?search=&categoria=&solo_disponibles=` -> Listado y búsqueda `LIKE %search%`.
+  - `POST /platos/registrar.php` -> Alta de plato.
+  - `POST /platos/actualizar.php` -> Edición de plato.
+  - `POST /platos/eliminar.php` -> Eliminación protegida (bloquea si tiene pedidos asociados en `detalle_pedido`).
+- **Mesas (HU-06):**
+  - `GET /mesas/listar.php` -> Lista de mesas con capacidad y estado.
+  - `POST /mesas/registrar.php` -> Registro de nueva mesa (valida duplicados y capacidad de 1 a 12).
+- **Pedidos y Cuentas (HU-08 / HU-09):**
+  - `GET /pedidos/obtener_por_mesa.php?id_mesa=` -> Obtiene el pedido activo (`ABIERTO`) y detalle de ítems.
+  - `POST /pedidos/agregar_item.php` -> Agrega ítems, congela `precio_unit` y cambia estado de mesa a `OCUPADA`.
+  - `POST /pedidos/cerrar_cuenta.php` -> Cierra la cuenta (`pedido.estado = 'CERRADO'`), calcula total acumulado y libera la mesa (`mesa.estado = 'LIBRE'`).
+- **Reportes de Ventas (HU-10):**
+  - `GET /reportes/resumen.php` -> Venta total del día, Top 5 platos más pedidos y ventas agrupadas por mesa.
 
 ---
 
-## 🛠️ Configuración y Despliegue Local
+## 👥 Credenciales de Acceso
 
-1. Iniciar **Apache** y **MySQL** desde el Panel de Control de **XAMPP**.
-2. Importar el script [`database/saborapp.sql`](database/saborapp.sql) en MySQL / phpMyAdmin.
-3. Copiar la carpeta `backend_api` a `C:\xampp\htdocs\saborapp_api\`.
-4. Abrir el proyecto en **Android Studio** y ejecutar (`Run` o `Shift + F10`).
+| Usuario | Contraseña | Rol | Acceso a Módulos |
+| :--- | :--- | :--- | :--- |
+| **`admin`** | `1234` | `ADMIN` | Platos (CRUD completo), Mesas, Pedidos, Reportes, Salir |
+| **`mozo`** | `1234` | `MOZO` | Platos (Consulta), Mesas, Pedidos (Toma y Cobro), Salir |
+
+---
+
+## 📦 Compilación y Generación de APKs (HU-12)
+
+- **APK Debug:** `app/build/outputs/apk/debug/app-debug.apk`
+- **APK Release:** `app/build/outputs/apk/release/app-release-unsigned.apk`
+
+Comandos de compilación Gradle:
+```bash
+# Compilar Debug APK
+./gradlew assembleDebug
+
+# Compilar Release APK
+./gradlew assembleRelease
+```
+
+---
+
+## 🌿 Ramas Git del Proyecto
+
+- `main` -> Versión final consolidada y estable.
+- `sprint1` -> Entregable Sprint 1 (Prototipos y navegación).
+- `sprint2` -> Entregable Sprint 2 (Persistencia MySQL, login y listados).
+- `sprint3` -> Entregable Sprint 3 (Edición de platos, toma de pedidos y cierre de cuentas).
+- `sprint4` -> Entregable Sprint 4 (Reportes, WhatsApp, sesión persistente y Release APK).

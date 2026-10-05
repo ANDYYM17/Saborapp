@@ -1,7 +1,7 @@
 <?php
 // ==========================================================
 // SaborApp - Backend REST API
-// Listar Platos (HU-05)
+// Listar y Buscar Platos (HU-05 / HU-07)
 // ==========================================================
 
 header("Content-Type: application/json; charset=UTF-8");
@@ -27,14 +27,31 @@ if (!$db) {
     exit();
 }
 
+$search = isset($_GET['search']) ? trim($_GET['search']) : '';
+$soloDisponibles = isset($_GET['solo_disponibles']) && $_GET['solo_disponibles'] == '1';
+
 try {
-    // CA3: Ordenado por categoría y luego por nombre
-    $query = "SELECT id, nombre, categoria, precio, disponible FROM plato ORDER BY categoria ASC, nombre ASC";
-    $stmt = $db->prepare($query);
+    $sql = "SELECT id, nombre, categoria, precio, disponible FROM plato WHERE 1=1";
+    $params = [];
+
+    if ($soloDisponibles) {
+        $sql .= " AND disponible = 1";
+    }
+
+    if (!empty($search)) {
+        $sql .= " AND (nombre LIKE :search OR categoria LIKE :search)";
+        $params[':search'] = '%' . $search . '%';
+    }
+
+    $sql .= " ORDER BY categoria ASC, nombre ASC";
+
+    $stmt = $db->prepare($sql);
+    foreach ($params as $key => $val) {
+        $stmt->bindValue($key, $val);
+    }
     $stmt->execute();
     $platos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // Formatear tipos
     foreach ($platos as &$p) {
         $p['id'] = (int)$p['id'];
         $p['precio'] = (float)$p['precio'];

@@ -50,9 +50,13 @@
             android:name=".ui.mesas.MesasActivity"
             android:exported="false" />
 
-        <!-- Módulo Pedido -->
+        <!-- Módulo Pedido y Cuenta -->
         <activity
             android:name=".ui.pedido.PedidoActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.cuenta.CuentaActivity"
             android:exported="false" />
 
         <!-- Módulo Reportes -->

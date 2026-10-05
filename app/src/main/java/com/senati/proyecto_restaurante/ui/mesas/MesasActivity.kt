@@ -41,7 +41,12 @@ class MesasActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        adapter = MesasAdapter()
+        adapter = MesasAdapter { mesa ->
+            val intent = android.content.Intent(this, com.senati.proyecto_restaurante.ui.pedido.PedidoActivity::class.java).apply {
+                putExtra("EXTRA_MESA_ID", mesa.id)
+            }
+            startActivity(intent)
+        }
         // HU-06: GridLayoutManager con 3 columnas
         binding.rvMesas.layoutManager = GridLayoutManager(this, 3)
         binding.rvMesas.adapter = adapter

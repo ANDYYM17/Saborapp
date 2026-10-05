@@ -139,7 +139,7 @@
                         app:thumbTint="@color/primary"
                         app:trackTint="@color/card_stroke" />
 
-                    <!-- Botón Guardar -->
+                    <!-- Botón Guardar / Actualizar -->
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnGuardarPlato"
                         style="@style/Widget.SaborApp.Button"
@@ -147,6 +147,21 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:text="@string/btn_guardar_plato" />
+
+                    <!-- Botón Eliminar (Solo visible en modo edición) -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnEliminarPlato"
+                        style="@style/Widget.Material3.Button.OutlinedButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:minHeight="50dp"
+                        android:text="@string/btn_eliminar_plato"
+                        android:textColor="@color/error"
+                        android:visibility="gone"
+                        app:cornerRadius="12dp"
+                        app:strokeColor="@color/error"
+                        tools:visibility="visible" />
 
                     <!-- Indicador de Carga -->
                     <ProgressBar
@@ -165,4 +180,3 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </LinearLayout>
-

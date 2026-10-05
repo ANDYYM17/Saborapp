@@ -16,24 +16,39 @@ class PlatosAdapter(
 
     private var listaFiltrada: List<Plato> = emptyList()
     private var categoriaActual: String = "TODOS"
+    private var queryBusqueda: String = ""
 
     fun updateData(newPlatos: List<Plato>) {
         this.listaOriginal = newPlatos
-        aplicarFiltro()
+        aplicarFiltros()
     }
 
     fun filtrarPorCategoria(categoria: String) {
         this.categoriaActual = categoria.uppercase(Locale.getDefault())
-        aplicarFiltro()
+        aplicarFiltros()
     }
 
-    private fun aplicarFiltro() {
-        listaFiltrada = if (categoriaActual == "TODOS" || categoriaActual.isEmpty()) {
-            listaOriginal
-        } else {
-            listaOriginal.filter {
-                it.categoria.equals(categoriaActual, ignoreCase = true)
+    fun filtrarPorTexto(query: String) {
+        this.queryBusqueda = query.trim().lowercase(Locale.getDefault())
+        aplicarFiltros()
+    }
+
+    private fun aplicarFiltros() {
+        listaFiltrada = listaOriginal.filter { plato ->
+            val matchCategoria = if (categoriaActual == "TODOS" || categoriaActual.isEmpty()) {
+                true
+            } else {
+                plato.categoria.equals(categoriaActual, ignoreCase = true)
             }
+
+            val matchTexto = if (queryBusqueda.isEmpty()) {
+                true
+            } else {
+                plato.nombre.lowercase(Locale.getDefault()).contains(queryBusqueda) ||
+                        plato.categoria.lowercase(Locale.getDefault()).contains(queryBusqueda)
+            }
+
+            matchCategoria && matchTexto
         }
         notifyDataSetChanged()
     }

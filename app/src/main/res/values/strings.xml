@@ -4,7 +4,7 @@
     <string name="restaurant_name">Pollería El Buen Sabor</string>
     <string name="app_tagline">Gestión Inteligente de Restaurante</string>
 
-    <!-- Login (HU-01 / HU-04) -->
+    <!-- Login (HU-01 / HU-04 / HU-12) -->
     <string name="login_title">Bienvenido a SaborApp</string>
     <string name="login_subtitle">Inicia sesión con tu cuenta del restaurante</string>
     <string name="login_user_hint">Usuario</string>
@@ -35,24 +35,34 @@
     <string name="menu_opt_salir">Cerrar Sesión</string>
     <string name="menu_opt_salir_desc">Volver a la pantalla de inicio</string>
 
-    <!-- HU-05: Platos -->
+    <!-- HU-05 / HU-07: Platos (CRUD + Búsqueda + Filtro) -->
     <string name="title_platos">Carta de Platos</string>
     <string name="btn_nuevo_plato">Nuevo Plato</string>
     <string name="title_registrar_plato">Registrar Plato</string>
+    <string name="title_editar_plato">Editar Plato</string>
     <string name="subtitle_registrar_plato">Agrega un nuevo plato o bebida a la carta</string>
+    <string name="subtitle_editar_plato">Modifica los datos del plato seleccionado</string>
     <string name="hint_nombre_plato">Nombre del plato</string>
     <string name="hint_categoria_plato">Categoría</string>
     <string name="hint_precio_plato">Precio (S/)</string>
     <string name="label_disponible">Disponible para la venta</string>
     <string name="btn_guardar_plato">Guardar Plato</string>
+    <string name="btn_actualizar_plato">Actualizar</string>
+    <string name="btn_eliminar_plato">Eliminar Plato</string>
+    <string name="dialog_eliminar_plato_title">Eliminar Plato</string>
+    <string name="dialog_eliminar_plato_msg">¿Está seguro de eliminar este plato?</string>
+    <string name="error_no_se_puede_eliminar_pedidos">No se puede eliminar: tiene pedidos</string>
     <string name="error_empty_nombre">El nombre del plato no puede estar vacío</string>
     <string name="error_empty_precio">El precio no puede estar vacío</string>
     <string name="error_invalid_precio">Precio inválido</string>
     <string name="msg_plato_guardado">Plato registrado exitosamente</string>
-    <string name="empty_platos_msg">No hay platos registrados en la carta</string>
+    <string name="msg_plato_actualizado">Plato actualizado exitosamente</string>
+    <string name="msg_plato_eliminado">Plato eliminado exitosamente</string>
+    <string name="empty_platos_msg">No se encontraron platos</string>
     <string name="status_disponible">Disponible</string>
     <string name="status_no_disponible">No disponible</string>
     <string name="precio_format">S/ %.2f</string>
+    <string name="hint_buscar_platos">Buscar plato por nombre…</string>
 
     <!-- HU-06: Mesas -->
     <string name="title_mesas">Gestión de Mesas</string>
@@ -73,16 +83,61 @@
     <string name="estado_libre">LIBRE</string>
     <string name="estado_ocupada">OCUPADA</string>
 
-    <!-- Pantallas Base (Sprint 3 y 4) -->
+    <!-- HU-08: Toma de Pedidos -->
     <string name="title_pedidos">Gestión de Pedidos</string>
-    <string name="title_reportes">Reportes del Negocio</string>
-    <string name="placeholder_pedidos_title">Módulo de Pedidos</string>
-    <string name="placeholder_pedidos_desc">Toma de pedidos y detalle por mesa.\n(Funcionalidad completa en Sprint 3)</string>
+    <string name="select_mesa_prompt">Selecciona una mesa para atender:</string>
+    <string name="title_pedido_mesa">Pedido: Mesa %1$d</string>
+    <string name="btn_agregar_plato">Agregar Plato</string>
+    <string name="btn_agregar">Agregar</string>
+    <string name="btn_ver_cuenta">Ver Cuenta</string>
+    <string name="label_total_pedido">Total:</string>
+    <string name="hint_seleccionar_plato">Seleccionar Plato:</string>
+    <string name="hint_cantidad">Cantidad:</string>
+    <string name="dialog_agregar_plato_title">Agregar Plato al Pedido</string>
+    <string name="msg_item_agregado">Plato agregado exitosamente</string>
+    <string name="empty_pedido_msg">Esta mesa aún no tiene platos agregados.\nPulsa \"Agregar Plato\" para comenzar.</string>
+    <string name="error_plato_no_disponible">El plato no está disponible</string>
+    <string name="error_cantidad_invalida">Ingrese una cantidad válida mayor a 0</string>
+    <string name="msg_no_pedido_activo">No hay pedidos abiertos para esta mesa</string>
+
+    <!-- HU-09: Cuenta de la Mesa -->
+    <string name="title_cuenta">Cuenta de la Mesa</string>
+    <string name="cuenta_mesa_title">Cuenta de la Mesa %1$d</string>
+    <string name="label_detalle_consumo">Detalle del Consumo</string>
+    <string name="btn_cerrar_cuenta">Cerrar Cuenta</string>
+    <string name="title_confirmar_cierre">Confirmar Cierre de Cuenta</string>
+    <string name="msg_confirmar_cierre">¿Está seguro de cerrar la cuenta de la Mesa %1$d y liberarla?</string>
+    <string name="title_cuenta_cerrada">Cuenta Cerrada</string>
+    <string name="msg_cuenta_cerrada">Cuenta cerrada exitosamente. Mesa liberada.</string>
+    <string name="error_mesa_sin_cuenta">La mesa está LIBRE o no tiene cuenta abierta</string>
+
+    <!-- HU-10: Reportes -->
+    <string name="title_reportes">Reportes de Ventas</string>
+    <string name="title_venta_dia">Venta del Día</string>
+    <string name="label_venta_dia">Venta Total del Día</string>
+    <string name="label_pedidos_cerrados_hoy">%1$d cuentas cerradas hoy</string>
+    <string name="title_top_platos">Top 5 Platos Más Pedidos</string>
+    <string name="label_top_platos">Top 5 Platos Más Pedidos</string>
+    <string name="msg_sin_top_platos">No hay ventas registradas para platos aún.</string>
+    <string name="title_ventas_mesa">Ventas por Mesa</string>
+    <string name="label_ventas_mesa">Ventas por Mesa</string>
+    <string name="msg_sin_ventas_mesa">No hay ventas registradas por mesa aún.</string>
+    <string name="sin_ventas_hoy">Sin ventas registradas hoy</string>
+    <string name="msg_sin_ventas_hoy">Sin ventas hoy</string>
     <string name="placeholder_reportes_title">Módulo de Reportes</string>
-    <string name="placeholder_reportes_desc">Estadísticas de ventas diarias y métricas.\n(Funcionalidad completa en Sprint 4)</string>
+    <string name="placeholder_reportes_desc">Estadísticas de ventas del restaurante</string>
+    <string name="rank_format">#%1$d</string>
+    <string name="unidades_vendidas_format">%1$d unidades</string>
+    <string name="total_acumulado_format">Total: S/ %.2f</string>
+
+    <!-- HU-11: Compartir Cuenta -->
+    <string name="btn_compartir_whatsapp">Compartir</string>
+    <string name="share_chooser_title">Enviar detalle de la cuenta</string>
 
     <!-- Acciones Comunes -->
     <string name="btn_back">Volver</string>
+    <string name="btn_aceptar">Aceptar</string>
+    <string name="btn_confirmar">Confirmar</string>
     <string name="content_desc_logo">Logo de SaborApp</string>
     <string name="content_desc_back">Regresar</string>
     <string name="content_desc_icon">Icono de opción</string>

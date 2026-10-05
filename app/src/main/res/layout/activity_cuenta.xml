@@ -17,7 +17,7 @@
             android:background="@color/primary"
             app:navigationIcon="@drawable/ic_arrow_back"
             app:navigationIconTint="@color/white"
-            app:title="@string/title_pedidos"
+            app:title="@string/title_cuenta"
             app:titleTextColor="@color/white" />
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -26,9 +26,9 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <!-- Selector de Mesa -->
+        <!-- Cabecera de la Cuenta (Ticket de Restaurante) -->
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardMesaSelector"
+            android:id="@+id/cardCuentaHeader"
             style="@style/Widget.SaborApp.CardView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -40,102 +40,69 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="12dp">
-
-                <ImageView
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:contentDescription="@string/content_desc_icon"
-                    android:src="@drawable/ic_table" />
-
-                <Spinner
-                    android:id="@+id/spinnerMesas"
-                    android:layout_width="0dp"
-                    android:layout_height="44dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_role_admin"
-                    android:paddingHorizontal="10dp"
-                    android:spinnerMode="dropdown" />
+                android:orientation="vertical"
+                android:padding="16dp">
 
                 <TextView
-                    android:id="@+id/tvMesaEstadoBadge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_role_admin"
-                    android:paddingHorizontal="10dp"
-                    android:paddingVertical="4dp"
-                    android:textColor="@color/status_libre"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    tools:text="LIBRE" />
+                    android:text="@string/restaurant_name"
+                    android:textColor="@color/primary"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
+                <TextView
+                    android:id="@+id/tvMesaNumeroTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:textColor="@color/text_primary"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    tools:text="Cuenta de la Mesa 1" />
+
+                <TextView
+                    android:id="@+id/tvFechaPedido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp"
+                    tools:text="Fecha: 2026-10-05 12:00" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- ProgressBar -->
-        <ProgressBar
-            android:id="@+id/progressBar"
+        <!-- Título de Detalle -->
+        <TextView
+            android:id="@+id/tvLabelConsumo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:indeterminateTint="@color/primary"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/label_detalle_consumo"
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cardMesaSelector"
-            tools:visibility="visible" />
+            app:layout_constraintTop_toBottomOf="@id/cardCuentaHeader" />
 
-        <!-- Empty State del Pedido -->
-        <LinearLayout
-            android:id="@+id/llEmptyPedido"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="24dp"
-            android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@id/cardBottomTotal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cardMesaSelector">
-
-            <ImageView
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:contentDescription="@string/content_desc_icon"
-                android:src="@drawable/ic_order" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:gravity="center"
-                android:text="@string/empty_pedido_msg"
-                android:textColor="@color/text_secondary"
-                android:textSize="14sp" />
-        </LinearLayout>
-
-        <!-- Lista de Items del Pedido -->
+        <!-- Lista de Items Consumidos -->
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvDetallePedido"
+            android:id="@+id/rvCuentaDetalle"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:clipToPadding="false"
-            android:paddingTop="4dp"
+            android:paddingTop="6dp"
             android:paddingBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@id/cardBottomTotal"
+            app:layout_constraintBottom_toTopOf="@id/cardCuentaBottom"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cardMesaSelector"
+            app:layout_constraintTop_toBottomOf="@id/tvLabelConsumo"
             tools:listitem="@layout/item_detalle_pedido" />
 
-        <!-- Panel Inferior con Total y Botones de Acción -->
+        <!-- Panel Inferior con Total, Cerrar Cuenta y Compartir WhatsApp -->
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardBottomTotal"
+            android:id="@+id/cardCuentaBottom"
             style="@style/Widget.SaborApp.CardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -161,52 +128,69 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/label_total_pedido"
+                        android:text="TOTAL A PAGAR:"
                         android:textColor="@color/text_primary"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/tvTotalPedido"
+                        android:id="@+id/tvTotalCuenta"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/primary"
-                        android:textSize="22sp"
+                        android:textSize="24sp"
                         android:textStyle="bold"
-                        tools:text="S/ 0.00" />
+                        tools:text="S/ 56.00" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="14dp"
                     android:orientation="horizontal">
 
+                    <!-- Botón Cerrar Cuenta (HU-09) -->
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnAgregarPlato"
+                        android:id="@+id/btnCerrarCuenta"
                         style="@style/Widget.SaborApp.Button"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="6dp"
                         android:layout_weight="1"
-                        android:text="@string/btn_agregar_plato" />
+                        android:text="@string/btn_cerrar_cuenta" />
 
+                    <!-- Botón Compartir WhatsApp (HU-11) -->
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnVerCuenta"
+                        android:id="@+id/btnCompartirCuenta"
                         style="@style/Widget.Material3.Button.OutlinedButton"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="6dp"
                         android:layout_weight="1"
                         android:minHeight="52dp"
-                        android:text="@string/btn_ver_cuenta"
+                        android:text="@string/btn_compartir_whatsapp"
                         android:textColor="@color/primary"
                         app:cornerRadius="12dp"
+                        app:icon="@drawable/ic_share"
+                        app:iconTint="@color/primary"
                         app:strokeColor="@color/primary" />
                 </LinearLayout>
 
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
+
+        <!-- Indicador de Carga -->
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateTint="@color/primary"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

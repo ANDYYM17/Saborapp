@@ -28,6 +28,20 @@ class LoginActivity : AppCompatActivity() {
 
         sessionManager = SessionManager(this)
 
+        // HU-12: Auto-login si la sesión ya fue guardada previamente
+        if (sessionManager.isLoggedIn()) {
+            val user = sessionManager.getUser()
+            if (user != null) {
+                val intent = Intent(this, MenuActivity::class.java).apply {
+                    putExtra(MenuActivity.EXTRA_USER, user)
+                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                }
+                startActivity(intent)
+                finish()
+                return
+            }
+        }
+
         setupInputValidation()
         setupListeners()
     }

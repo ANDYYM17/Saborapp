@@ -7,9 +7,11 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.senati.proyecto_restaurante.R
+import com.senati.proyecto_restaurante.data.model.Plato
 import com.senati.proyecto_restaurante.data.repository.PlatoRepository
 import com.senati.proyecto_restaurante.databinding.ActivityPlatosBinding
 import kotlinx.coroutines.launch
@@ -20,7 +22,7 @@ class PlatosActivity : AppCompatActivity() {
     private val platoRepository = PlatoRepository()
     private lateinit var adapter: PlatosAdapter
 
-    private val nuevoPlatoLauncher = registerForActivityResult(
+    private val formPlatoLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
@@ -36,6 +38,7 @@ class PlatosActivity : AppCompatActivity() {
         setupToolbar()
         setupRecyclerView()
         setupCategoryFilters()
+        setupSearchInput()
         setupListeners()
         cargarPlatos()
     }
@@ -47,9 +50,19 @@ class PlatosActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        adapter = PlatosAdapter()
+        // HU-07: Al hacer click en un plato, abrir formulario en modo edición
+        adapter = PlatosAdapter { plato ->
+            abrirFormularioEdicion(plato)
+        }
         binding.rvPlatos.layoutManager = LinearLayoutManager(this)
         binding.rvPlatos.adapter = adapter
+    }
+
+    private fun abrirFormularioEdicion(plato: Plato) {
+        val intent = Intent(this, FormularioPlatoActivity::class.java).apply {
+            putExtra(FormularioPlatoActivity.EXTRA_PLATO, plato)
+        }
+        formPlatoLauncher.launch(intent)
     }
 
     private fun setupCategoryFilters() {
@@ -69,10 +82,18 @@ class PlatosActivity : AppCompatActivity() {
         }
     }
 
+    private fun setupSearchInput() {
+        // HU-07: Búsqueda en tiempo real mientras el usuario escribe
+        binding.etBuscarPlato.doAfterTextChanged { text ->
+            adapter.filtrarPorTexto(text?.toString().orEmpty())
+            actualizarEstadoVacio()
+        }
+    }
+
     private fun setupListeners() {
         binding.fabNuevoPlato.setOnClickListener {
             val intent = Intent(this, FormularioPlatoActivity::class.java)
-            nuevoPlatoLauncher.launch(intent)
+            formPlatoLauncher.launch(intent)
         }
     }
 

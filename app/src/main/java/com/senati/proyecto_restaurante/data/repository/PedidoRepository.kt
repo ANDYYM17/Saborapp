@@ -2,20 +2,20 @@ package com.senati.proyecto_restaurante.data.repository
 
 import com.senati.proyecto_restaurante.data.api.ApiConfig
 import com.senati.proyecto_restaurante.data.api.RetrofitClient
-import com.senati.proyecto_restaurante.data.model.Plato
-import com.senati.proyecto_restaurante.data.model.PlatoIdRequest
+import com.senati.proyecto_restaurante.data.model.AgregarItemRequest
+import com.senati.proyecto_restaurante.data.model.MesaIdRequest
+import com.senati.proyecto_restaurante.data.model.Pedido
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class PlatoRepository {
+class PedidoRepository {
 
-    suspend fun listarPlatos(search: String? = null, soloDisponibles: Boolean = false): Result<List<Plato>> {
+    suspend fun obtenerPedidoPorMesa(idMesa: Int): Result<Pedido?> {
         return withContext(Dispatchers.IO) {
-            val soloDispParam = if (soloDisponibles) 1 else null
             for (url in ApiConfig.CANDIDATE_URLS) {
                 try {
                     val service = RetrofitClient.getClient(url)
-                    val response = service.listarPlatos(search, soloDispParam)
+                    val response = service.obtenerPedidoPorMesa(idMesa)
 
                     if (response.isSuccessful && response.body() != null) {
                         val body = response.body()!!
@@ -24,64 +24,19 @@ class PlatoRepository {
                         }
                     }
                 } catch (_: Exception) {
-                    // Siguiente URL
                 }
             }
-            Result.failure(Exception("No se pudieron cargar los platos desde el servidor MySQL"))
+            Result.failure(Exception("Error al consultar el pedido de la mesa"))
         }
     }
 
-    suspend fun registrarPlato(plato: Plato): Result<Plato> {
+    suspend fun agregarItem(idMesa: Int, idPlato: Int, cantidad: Int): Result<String> {
         return withContext(Dispatchers.IO) {
+            val request = AgregarItemRequest(idMesa = idMesa, idPlato = idPlato, cantidad = cantidad)
             for (url in ApiConfig.CANDIDATE_URLS) {
                 try {
                     val service = RetrofitClient.getClient(url)
-                    val response = service.registrarPlato(plato)
-
-                    if (response.isSuccessful && response.body() != null) {
-                        val body = response.body()!!
-                        return@withContext if (body.success && body.data != null) {
-                            Result.success(body.data)
-                        } else {
-                            Result.failure(Exception(body.message))
-                        }
-                    }
-                } catch (_: Exception) {
-                }
-            }
-            Result.failure(Exception("Error de conexión al registrar el plato"))
-        }
-    }
-
-    suspend fun actualizarPlato(plato: Plato): Result<Plato> {
-        return withContext(Dispatchers.IO) {
-            for (url in ApiConfig.CANDIDATE_URLS) {
-                try {
-                    val service = RetrofitClient.getClient(url)
-                    val response = service.actualizarPlato(plato)
-
-                    if (response.isSuccessful && response.body() != null) {
-                        val body = response.body()!!
-                        return@withContext if (body.success && body.data != null) {
-                            Result.success(body.data)
-                        } else {
-                            Result.failure(Exception(body.message))
-                        }
-                    }
-                } catch (_: Exception) {
-                }
-            }
-            Result.failure(Exception("Error de conexión al actualizar el plato"))
-        }
-    }
-
-    suspend fun eliminarPlato(id: Int): Result<String> {
-        return withContext(Dispatchers.IO) {
-            val request = PlatoIdRequest(id = id)
-            for (url in ApiConfig.CANDIDATE_URLS) {
-                try {
-                    val service = RetrofitClient.getClient(url)
-                    val response = service.eliminarPlato(request)
+                    val response = service.agregarItemPedido(request)
 
                     if (response.isSuccessful && response.body() != null) {
                         val body = response.body()!!
@@ -94,7 +49,30 @@ class PlatoRepository {
                 } catch (_: Exception) {
                 }
             }
-            Result.failure(Exception("Error de conexión al eliminar el plato"))
+            Result.failure(Exception("Error de conexión al agregar item al pedido"))
+        }
+    }
+
+    suspend fun cerrarCuenta(idMesa: Int): Result<String> {
+        return withContext(Dispatchers.IO) {
+            val request = MesaIdRequest(idMesa = idMesa)
+            for (url in ApiConfig.CANDIDATE_URLS) {
+                try {
+                    val service = RetrofitClient.getClient(url)
+                    val response = service.cerrarCuenta(request)
+
+                    if (response.isSuccessful && response.body() != null) {
+                        val body = response.body()!!
+                        return@withContext if (body.success) {
+                            Result.success(body.message)
+                        } else {
+                            Result.failure(Exception(body.message))
+                        }
+                    }
+                } catch (_: Exception) {
+                }
+            }
+            Result.failure(Exception("Error de conexión al cerrar la cuenta"))
         }
     }
 }

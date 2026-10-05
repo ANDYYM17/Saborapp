@@ -11,6 +11,6 @@ data class Mesa(
     @SerializedName("capacidad")
     val capacidad: Int,
     @SerializedName("estado")
-    val estado: String = "LIBRE"
+    var estado: String = "LIBRE"
 ) : Serializable
 
