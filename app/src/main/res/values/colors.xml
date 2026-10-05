@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Paleta Cálida SaborApp (Pollería El Buen Sabor) -->
+    <color name="primary">#E65100</color>
+    <color name="primary_dark">#BF360C</color>
+    <color name="primary_light">#FF8A50</color>
+    <color name="primary_container">#FFEBE0</color>
+    <color name="on_primary">#FFFFFF</color>
+    <color name="on_primary_container">#3E1000</color>
+
+    <color name="secondary">#D32F2F</color>
+    <color name="secondary_dark">#9A0007</color>
+    <color name="secondary_light">#FF6659</color>
+    <color name="secondary_container">#FFEDEA</color>
+    <color name="on_secondary">#FFFFFF</color>
+
+    <color name="background">#FFF8F5</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="surface_variant">#F5EBE6</color>
+    <color name="card_stroke">#FFCCBC</color>
+
+    <!-- Textos -->
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#666666</color>
+    <color name="text_hint">#9E9E9E</color>
+
+    <!-- Badges de Rol -->
+    <color name="role_admin_bg">#FFE8EC</color>
+    <color name="role_admin_text">#C62828</color>
+    <color name="role_mozo_bg">#E3F2FD</color>
+    <color name="role_mozo_text">#0D47A1</color>
+
+    <!-- Estados y Alertas -->
+    <color name="status_libre">#2E7D32</color>
+    <color name="status_libre_bg">#E8F5E9</color>
+    <color name="status_ocupada">#C62828</color>
+    <color name="status_ocupada_bg">#FFEBEE</color>
+
+    <color name="error">#D32F2F</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>
