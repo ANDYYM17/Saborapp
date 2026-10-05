@@ -4,7 +4,7 @@
     <string name="restaurant_name">Pollería El Buen Sabor</string>
     <string name="app_tagline">Gestión Inteligente de Restaurante</string>
 
-    <!-- Login (HU-01) -->
+    <!-- Login (HU-01 / HU-04) -->
     <string name="login_title">Bienvenido a SaborApp</string>
     <string name="login_subtitle">Inicia sesión con tu cuenta del restaurante</string>
     <string name="login_user_hint">Usuario</string>
@@ -35,21 +35,49 @@
     <string name="menu_opt_salir">Cerrar Sesión</string>
     <string name="menu_opt_salir_desc">Volver a la pantalla de inicio</string>
 
-    <!-- Pantallas Base (Sprint 1 Navegación) -->
+    <!-- HU-05: Platos -->
     <string name="title_platos">Carta de Platos</string>
+    <string name="btn_nuevo_plato">Nuevo Plato</string>
+    <string name="title_registrar_plato">Registrar Plato</string>
+    <string name="subtitle_registrar_plato">Agrega un nuevo plato o bebida a la carta</string>
+    <string name="hint_nombre_plato">Nombre del plato</string>
+    <string name="hint_categoria_plato">Categoría</string>
+    <string name="hint_precio_plato">Precio (S/)</string>
+    <string name="label_disponible">Disponible para la venta</string>
+    <string name="btn_guardar_plato">Guardar Plato</string>
+    <string name="error_empty_nombre">El nombre del plato no puede estar vacío</string>
+    <string name="error_empty_precio">El precio no puede estar vacío</string>
+    <string name="error_invalid_precio">Precio inválido</string>
+    <string name="msg_plato_guardado">Plato registrado exitosamente</string>
+    <string name="empty_platos_msg">No hay platos registrados en la carta</string>
+    <string name="status_disponible">Disponible</string>
+    <string name="status_no_disponible">No disponible</string>
+    <string name="precio_format">S/ %.2f</string>
+
+    <!-- HU-06: Mesas -->
     <string name="title_mesas">Gestión de Mesas</string>
+    <string name="btn_nueva_mesa">Nueva Mesa</string>
+    <string name="title_registrar_mesa">Registrar Nueva Mesa</string>
+    <string name="hint_numero_mesa">Número de mesa</string>
+    <string name="hint_capacidad_mesa">Capacidad (1 a 12 personas)</string>
+    <string name="btn_guardar_mesa">Guardar Mesa</string>
+    <string name="btn_cancelar">Cancelar</string>
+    <string name="error_empty_numero_mesa">Ingrese el número de mesa</string>
+    <string name="error_empty_capacidad_mesa">Ingrese la capacidad</string>
+    <string name="error_mesa_duplicada">La mesa ya existe</string>
+    <string name="error_capacidad_invalida">Capacidad inválida</string>
+    <string name="msg_mesa_guardada">Mesa registrada exitosamente</string>
+    <string name="empty_mesas_msg">No hay mesas registradas</string>
+    <string name="mesa_label">Mesa %1$d</string>
+    <string name="capacidad_label">%1$d personas</string>
+    <string name="estado_libre">LIBRE</string>
+    <string name="estado_ocupada">OCUPADA</string>
+
+    <!-- Pantallas Base (Sprint 3 y 4) -->
     <string name="title_pedidos">Gestión de Pedidos</string>
     <string name="title_reportes">Reportes del Negocio</string>
-
-    <string name="placeholder_platos_title">Módulo de Platos</string>
-    <string name="placeholder_platos_desc">Listado y gestión de la carta del restaurante.\n(Funcionalidad completa en Sprint 2)</string>
-
-    <string name="placeholder_mesas_title">Módulo de Mesas</string>
-    <string name="placeholder_mesas_desc">Visualización de mesas disponibles y ocupadas.\n(Funcionalidad completa en Sprint 3)</string>
-
     <string name="placeholder_pedidos_title">Módulo de Pedidos</string>
     <string name="placeholder_pedidos_desc">Toma de pedidos y detalle por mesa.\n(Funcionalidad completa en Sprint 3)</string>
-
     <string name="placeholder_reportes_title">Módulo de Reportes</string>
     <string name="placeholder_reportes_desc">Estadísticas de ventas diarias y métricas.\n(Funcionalidad completa en Sprint 4)</string>
 

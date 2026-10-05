@@ -14,7 +14,7 @@ class AuthRepository {
             val request = LoginRequest(usuario = usuario, clave = clave)
             var lastErrorMessage: String? = null
 
-            // Intentar primero conectarse a los endpoints de XAMPP
+            // HU-04: Autenticación 100% real consultando la base de datos MySQL mediante la API
             for (url in ApiConfig.CANDIDATE_URLS) {
                 try {
                     val service = RetrofitClient.getClient(url)
@@ -32,19 +32,12 @@ class AuthRepository {
                     }
                 } catch (e: Exception) {
                     lastErrorMessage = e.message
-                    // Continuar con el siguiente endpoint candidato
+                    // Probar siguiente endpoint candidato
                 }
             }
 
-            // Si los endpoints de red no responden (ej. firewall o emulador sin puente de red),
-            // se valida contra los usuarios iniciales definidos para Sprint 1
-            if (usuario.equals("admin", ignoreCase = true) && clave == "1234") {
-                Result.success(Usuario(id = 1, usuario = "admin", rol = "ADMIN"))
-            } else if (usuario.equals("mozo1", ignoreCase = true) && clave == "1234") {
-                Result.success(Usuario(id = 2, usuario = "mozo1", rol = "MOZO"))
-            } else {
-                Result.failure(Exception("Credenciales incorrectas"))
-            }
+            Result.failure(Exception(lastErrorMessage ?: "Error al conectar con la base de datos MySQL"))
         }
     }
 }
+

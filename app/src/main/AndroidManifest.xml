@@ -40,6 +40,11 @@
             android:name=".ui.platos.PlatosActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".ui.platos.FormularioPlatoActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
         <!-- Módulo Mesas -->
         <activity
             android:name=".ui.mesas.MesasActivity"
