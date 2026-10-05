@@ -9,78 +9,102 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="24dp">
+        android:layout_height="wrap_content">
 
-        <!-- Logo del Restaurante -->
-        <ImageView
-            android:id="@+id/ivLogo"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
-            android:layout_marginTop="32dp"
-            android:contentDescription="@string/content_desc_logo"
-            android:src="@drawable/ic_saborapp_logo"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+        <!-- Banner Superior Degradado -->
+        <View
+            android:id="@+id/headerBackground"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:background="@drawable/bg_gradient_header"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- Nombre de la App -->
+        <!-- Logo e Identidad de la Marca -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardLogoContainer"
+            android:layout_width="104dp"
+            android:layout_height="104dp"
+            android:layout_marginTop="36dp"
+            app:cardCornerRadius="26dp"
+            app:cardElevation="8dp"
+            app:strokeColor="@color/white"
+            app:strokeWidth="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/ivLogo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/content_desc_logo"
+                android:scaleType="centerCrop"
+                android:src="@drawable/logo_saborapp" />
+        </com.google.android.material.card.MaterialCardView>
+
         <TextView
             android:id="@+id/tvAppName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="12dp"
             android:text="@string/app_name"
-            android:textColor="@color/primary"
-            android:textSize="28sp"
+            android:textColor="@color/white"
+            android:textSize="26sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ivLogo" />
+            app:layout_constraintTop_toBottomOf="@id/cardLogoContainer" />
 
-        <!-- Subtítulo / Pollería -->
         <TextView
             android:id="@+id/tvSubtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="2dp"
             android:text="@string/restaurant_name"
-            android:textColor="@color/secondary"
-            android:textSize="16sp"
+            android:textColor="#FFF3E0"
+            android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvAppName" />
 
-        <TextView
-            android:id="@+id/tvInstruction"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="@string/login_subtitle"
-            android:textColor="@color/text_secondary"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvSubtitle" />
-
-        <!-- Tarjeta del Formulario de Login -->
+        <!-- Tarjeta Principal de Login Empresarial -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardLogin"
             style="@style/Widget.SaborApp.CardView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            app:cardUseCompatPadding="true"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="6dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvInstruction">
+            app:layout_constraintTop_toBottomOf="@id/tvSubtitle">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="20dp">
+                android:padding="24dp">
+
+                <TextView
+                    android:id="@+id/tvInstructionTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Acceso al Sistema"
+                    android:textColor="@color/text_primary"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvInstruction"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Ingresa tus credenciales autorizadas"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp" />
 
                 <!-- Campo Usuario -->
                 <com.google.android.material.textfield.TextInputLayout
@@ -88,6 +112,7 @@
                     style="@style/Widget.SaborApp.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
                     android:hint="@string/login_user_hint"
                     app:errorEnabled="true"
                     app:startIconDrawable="@drawable/ic_person"
@@ -132,7 +157,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="@string/login_btn_submit" />
+                    android:text="@string/login_btn_submit"
+                    app:cornerRadius="14dp" />
 
                 <!-- Indicador de Carga -->
                 <ProgressBar
@@ -153,8 +179,8 @@
             android:id="@+id/tvTagline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginBottom="24dp"
             android:text="@string/app_tagline"
             android:textColor="@color/text_hint"
             android:textSize="12sp"
@@ -166,4 +192,3 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
-
