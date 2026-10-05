@@ -22,13 +22,13 @@
         <!-- Logo e Identidad de la Marca -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardLogoContainer"
-            android:layout_width="104dp"
-            android:layout_height="104dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginTop="36dp"
-            app:cardCornerRadius="26dp"
-            app:cardElevation="8dp"
-            app:strokeColor="@color/white"
-            app:strokeWidth="2dp"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:strokeWidth="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -38,7 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:contentDescription="@string/content_desc_logo"
-                android:scaleType="centerCrop"
+                android:scaleType="fitCenter"
                 android:src="@drawable/logo_saborapp" />
         </com.google.android.material.card.MaterialCardView>
 

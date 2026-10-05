@@ -25,9 +25,9 @@
                 android:layout_width="52dp"
                 android:layout_height="52dp"
                 app:cardCornerRadius="14dp"
-                app:cardElevation="4dp"
-                app:strokeColor="@color/white"
-                app:strokeWidth="1.5dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:strokeWidth="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -37,7 +37,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:contentDescription="@string/content_desc_logo"
-                    android:scaleType="centerCrop"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/logo_saborapp" />
             </com.google.android.material.card.MaterialCardView>
 
