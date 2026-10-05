@@ -48,3 +48,4 @@ Aplicación móvil nativa para Android desarrollada en **Kotlin** para la gesti�
 2. Crear la base de datos `saborapp` e importar el archivo `database/saborapp.sql`.
 3. Copiar la carpeta `backend_api` en `C:\xampp\htdocs\saborapp_api\`.
 4. Abrir el proyecto en **Android Studio** y ejecutar en el emulador o dispositivo físico.
+
