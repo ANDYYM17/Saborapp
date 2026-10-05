@@ -6,9 +6,11 @@
     android:layout_height="match_parent"
     android:background="@color/background">
 
+    <!-- AppBar Superior -->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:elevation="2dp">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
@@ -26,43 +28,62 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <!-- Campo de Búsqueda (HU-07) -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilBuscarPlato"
-            style="@style/Widget.SaborApp.TextInputLayout"
-            android:layout_width="match_parent"
+        <!-- Barra de Búsqueda Flotante -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardSearch"
+            style="@style/Widget.SaborApp.CardView"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="12dp"
-            android:layout_marginTop="8dp"
-            android:hint="@string/hint_buscar_platos"
-            app:endIconMode="clear_text"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="12dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="1dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:startIconDrawable="@drawable/ic_search"
-            app:startIconTint="@color/primary">
+            app:layout_constraintTop_toTopOf="parent">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etBuscarPlato"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:maxLines="1"
-                android:textColor="@color/text_primary" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="12dp">
 
-        <!-- Barra de Filtros por Categoría -->
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:contentDescription="@string/content_desc_icon"
+                    android:src="@drawable/ic_search"
+                    app:tint="@color/primary" />
+
+                <EditText
+                    android:id="@+id/etBuscarPlato"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:background="@android:color/transparent"
+                    android:hint="@string/hint_buscar_platos"
+                    android:imeOptions="actionSearch"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_hint"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Filtros de Categoría -->
         <HorizontalScrollView
-            android:id="@+id/hsvFilters"
+            android:id="@+id/scrollChips"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:clipToPadding="false"
-            android:paddingHorizontal="12dp"
-            android:paddingVertical="6dp"
+            android:paddingHorizontal="16dp"
             android:scrollbars="none"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tilBuscarPlato">
+            app:layout_constraintTop_toBottomOf="@id/cardSearch">
 
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/chipGroupCategorias"
@@ -79,7 +100,7 @@
                     android:layout_height="wrap_content"
                     android:checked="true"
                     android:text="Todos"
-                    app:chipBackgroundColor="@color/surface" />
+                    app:chipBackgroundColor="@color/white" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipEntradas"
@@ -87,7 +108,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Entradas"
-                    app:chipBackgroundColor="@color/surface" />
+                    app:chipBackgroundColor="@color/white" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipFondos"
@@ -95,7 +116,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Fondos"
-                    app:chipBackgroundColor="@color/surface" />
+                    app:chipBackgroundColor="@color/white" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipBebidas"
@@ -103,7 +124,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Bebidas"
-                    app:chipBackgroundColor="@color/surface" />
+                    app:chipBackgroundColor="@color/white" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipPostres"
@@ -111,12 +132,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Postres"
-                    app:chipBackgroundColor="@color/surface" />
+                    app:chipBackgroundColor="@color/white" />
 
             </com.google.android.material.chip.ChipGroup>
         </HorizontalScrollView>
 
-        <!-- ProgressBar -->
+        <!-- Indicador de Carga -->
         <ProgressBar
             android:id="@+id/progressBar"
             android:layout_width="wrap_content"
@@ -126,10 +147,10 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/hsvFilters"
+            app:layout_constraintTop_toBottomOf="@id/scrollChips"
             tools:visibility="visible" />
 
-        <!-- Vista de Lista Vacía -->
+        <!-- Empty State -->
         <LinearLayout
             android:id="@+id/llEmptyState"
             android:layout_width="wrap_content"
@@ -141,13 +162,14 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/hsvFilters">
+            app:layout_constraintTop_toBottomOf="@id/scrollChips">
 
             <ImageView
                 android:layout_width="64dp"
                 android:layout_height="64dp"
                 android:contentDescription="@string/content_desc_icon"
-                android:src="@drawable/ic_dishes" />
+                android:src="@drawable/ic_dishes"
+                app:tint="@color/text_hint" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -155,7 +177,7 @@
                 android:layout_marginTop="12dp"
                 android:text="@string/empty_platos_msg"
                 android:textColor="@color/text_secondary"
-                android:textSize="15sp" />
+                android:textSize="14sp" />
         </LinearLayout>
 
         <!-- Lista de Platos -->
@@ -164,17 +186,17 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:clipToPadding="false"
-            android:paddingTop="4dp"
-            android:paddingBottom="88dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="80dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/hsvFilters"
+            app:layout_constraintTop_toBottomOf="@id/scrollChips"
             tools:listitem="@layout/item_plato" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- Botón Flotante para Registrar Plato -->
+    <!-- FAB Nuevo Plato -->
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/fabNuevoPlato"
         android:layout_width="wrap_content"
@@ -184,6 +206,7 @@
         android:backgroundTint="@color/primary"
         android:text="@string/btn_nuevo_plato"
         android:textColor="@color/white"
+        app:elevation="4dp"
         app:icon="@drawable/ic_dishes"
         app:iconTint="@color/white" />
 

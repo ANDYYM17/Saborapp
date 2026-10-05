@@ -8,7 +8,8 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:elevation="2dp">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
@@ -32,7 +33,9 @@
             style="@style/Widget.SaborApp.CardView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="12dp"
+            android:layout_margin="16dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardElevation="2dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -43,21 +46,40 @@
                 android:orientation="vertical"
                 android:padding="16dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/restaurant_name"
-                    android:textColor="@color/primary"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:contentDescription="@string/content_desc_icon"
+                        android:src="@drawable/logo_saborapp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="@string/restaurant_name"
+                        android:textColor="@color/primary"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="@color/card_stroke" />
 
                 <TextView
                     android:id="@+id/tvMesaNumeroTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
                     android:textColor="@color/text_primary"
-                    android:textSize="15sp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     tools:text="Cuenta de la Mesa 1" />
 
@@ -77,8 +99,8 @@
             android:id="@+id/tvLabelConsumo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="4dp"
             android:text="@string/label_detalle_consumo"
             android:textColor="@color/text_secondary"
             android:textSize="14sp"
@@ -93,7 +115,7 @@
             android:layout_height="0dp"
             android:clipToPadding="false"
             android:paddingTop="6dp"
-            android:paddingBottom="8dp"
+            android:paddingBottom="100dp"
             app:layout_constraintBottom_toTopOf="@id/cardCuentaBottom"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -106,8 +128,9 @@
             style="@style/Widget.SaborApp.CardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="0dp"
-            app:cardElevation="8dp"
+            app:cardElevation="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
@@ -170,10 +193,11 @@
                         android:minHeight="52dp"
                         android:text="@string/btn_compartir_whatsapp"
                         android:textColor="@color/whatsapp_green"
-                        app:cornerRadius="12dp"
+                        app:cornerRadius="14dp"
                         app:icon="@drawable/ic_share"
                         app:iconTint="@color/whatsapp_green"
-                        app:strokeColor="@color/whatsapp_green" />
+                        app:strokeColor="@color/whatsapp_green"
+                        app:strokeWidth="1.5dp" />
                 </LinearLayout>
 
             </LinearLayout>

@@ -12,7 +12,7 @@
         
         <item name="android:colorBackground">@color/background</item>
         <item name="colorSurface">@color/surface</item>
-        <item name="colorSurfaceVariant">@color/surface_variant</item>
+        <item name="colorSurfaceVariant">@color/white</item>
         <item name="colorError">@color/error</item>
 
         <item name="android:statusBarColor">@color/primary_dark</item>
@@ -22,11 +22,11 @@
     <style name="Theme.Proyecto_restaurante" parent="Base.Theme.SaborApp" />
     <style name="Theme.SaborApp" parent="Base.Theme.SaborApp" />
 
-    <!-- Estilo de Tarjetas del Menú -->
+    <!-- Estilo de Tarjetas Blancas Limpias -->
     <style name="Widget.SaborApp.CardView" parent="Widget.Material3.CardView.Elevated">
-        <item name="cardCornerRadius">16dp</item>
-        <item name="cardElevation">3dp</item>
-        <item name="cardBackgroundColor">@color/surface</item>
+        <item name="cardCornerRadius">18dp</item>
+        <item name="cardElevation">2dp</item>
+        <item name="cardBackgroundColor">@color/white</item>
         <item name="strokeColor">@color/card_stroke</item>
         <item name="strokeWidth">1dp</item>
     </style>
@@ -35,7 +35,7 @@
     <style name="Widget.SaborApp.Button" parent="Widget.Material3.Button">
         <item name="backgroundTint">@color/primary</item>
         <item name="android:textColor">@color/white</item>
-        <item name="cornerRadius">12dp</item>
+        <item name="cornerRadius">14dp</item>
         <item name="android:minHeight">52dp</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textStyle">bold</item>
@@ -43,11 +43,12 @@
 
     <!-- Estilo de Campos de Texto -->
     <style name="Widget.SaborApp.TextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
-        <item name="boxCornerRadiusTopStart">12dp</item>
-        <item name="boxCornerRadiusTopEnd">12dp</item>
-        <item name="boxCornerRadiusBottomStart">12dp</item>
-        <item name="boxCornerRadiusBottomEnd">12dp</item>
+        <item name="boxCornerRadiusTopStart">14dp</item>
+        <item name="boxCornerRadiusTopEnd">14dp</item>
+        <item name="boxCornerRadiusBottomStart">14dp</item>
+        <item name="boxCornerRadiusBottomEnd">14dp</item>
         <item name="boxStrokeColor">@color/primary</item>
+        <item name="boxBackgroundColor">@color/white</item>
         <item name="hintTextColor">@color/primary</item>
     </style>
 </resources>

@@ -5,9 +5,12 @@
     style="@style/Widget.SaborApp.CardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="12dp"
+    android:layout_marginHorizontal="16dp"
     android:layout_marginVertical="4dp"
-    app:cardElevation="1dp">
+    app:cardBackgroundColor="@color/white"
+    app:cardElevation="1dp"
+    app:strokeColor="@color/card_stroke"
+    app:strokeWidth="1dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,12 +19,12 @@
 
         <TextView
             android:id="@+id/tvCantidadItem"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:background="@drawable/bg_role_mozo"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/bg_status_libre"
             android:gravity="center"
-            android:textColor="@color/primary"
-            android:textSize="14sp"
+            android:textColor="@color/status_libre"
+            android:textSize="13sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -94,37 +94,48 @@ class ReportesActivity : AppCompatActivity() {
     }
 
     private fun crearFilaTopPlato(posicion: Int, plato: TopPlato): View {
-        val row = LinearLayout(this).apply {
-            orientation = LinearLayout.HORIZONTAL
-            gravity = android.view.Gravity.CENTER_VERTICAL
-            setPadding(24, 16, 24, 16)
+        val card = com.google.android.material.card.MaterialCardView(this).apply {
+            cardElevation = 0f
+            radius = 24f
+            setCardBackgroundColor(getColor(R.color.background))
+            strokeColor = getColor(R.color.card_stroke)
+            strokeWidth = 2
             layoutParams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
             ).apply {
                 setMargins(0, 6, 0, 6)
             }
-            setBackgroundResource(R.drawable.bg_role_admin)
         }
 
-        val medal = when (posicion) {
-            1 -> "🥇 #1"
-            2 -> "🥈 #2"
-            3 -> "🥉 #3"
-            else -> "#$posicion"
+        val row = LinearLayout(this).apply {
+            orientation = LinearLayout.HORIZONTAL
+            gravity = android.view.Gravity.CENTER_VERTICAL
+            setPadding(20, 16, 20, 16)
+        }
+
+        val (badgeText, badgeBg, badgeTextColor) = when (posicion) {
+            1 -> Triple("🥇 #1", R.color.rank_gold_bg, R.color.rank_gold)
+            2 -> Triple("🥈 #2", R.color.rank_silver_bg, R.color.rank_silver)
+            3 -> Triple("🥉 #3", R.color.rank_bronze_bg, R.color.rank_bronze)
+            else -> Triple("#$posicion", R.color.surface_variant, R.color.text_secondary)
         }
 
         val tvBadge = TextView(this).apply {
-            text = medal
-            textSize = 13f
-            setTextColor(getColor(R.color.primary))
+            text = badgeText
+            textSize = 12f
+            setTextColor(getColor(badgeTextColor))
             setTypeface(typeface, android.graphics.Typeface.BOLD)
-            setPadding(0, 0, 16, 0)
+            setBackgroundResource(badgeBg)
+            setPadding(16, 8, 16, 8)
         }
 
         val infoLayout = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
-            layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f)
+            layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f).apply {
+                marginStart = 20
+                marginEnd = 12
+            }
         }
 
         val tvNombre = TextView(this).apply {
@@ -154,54 +165,69 @@ class ReportesActivity : AppCompatActivity() {
         row.addView(infoLayout)
         row.addView(tvMonto)
 
-        return row
+        card.addView(row)
+        return card
     }
 
     private fun crearFilaVentaMesa(mesa: VentaMesa): View {
-        val row = LinearLayout(this).apply {
-            orientation = LinearLayout.HORIZONTAL
-            gravity = android.view.Gravity.CENTER_VERTICAL
-            setPadding(24, 16, 24, 16)
+        val card = com.google.android.material.card.MaterialCardView(this).apply {
+            cardElevation = 0f
+            radius = 24f
+            setCardBackgroundColor(getColor(R.color.background))
+            strokeColor = getColor(R.color.card_stroke)
+            strokeWidth = 2
             layoutParams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
             ).apply {
                 setMargins(0, 6, 0, 6)
             }
-            setBackgroundResource(R.drawable.bg_role_mozo)
+        }
+
+        val row = LinearLayout(this).apply {
+            orientation = LinearLayout.HORIZONTAL
+            gravity = android.view.Gravity.CENTER_VERTICAL
+            setPadding(20, 16, 20, 16)
+        }
+
+        val tvMesaBadge = TextView(this).apply {
+            text = String.format(Locale.getDefault(), "Mesa %d", mesa.numeroMesa)
+            textSize = 12f
+            setTextColor(getColor(R.color.role_mozo_text))
+            setTypeface(typeface, android.graphics.Typeface.BOLD)
+            setBackgroundResource(R.color.role_mozo_bg)
+            setPadding(16, 8, 16, 8)
         }
 
         val infoLayout = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
-            layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f)
+            layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f).apply {
+                marginStart = 20
+                marginEnd = 12
+            }
         }
 
-        val tvMesa = TextView(this).apply {
-            text = String.format(Locale.getDefault(), "Mesa %d", mesa.numeroMesa)
-            textSize = 14f
+        val tvPedidos = TextView(this).apply {
+            text = String.format(Locale.getDefault(), "%d pedidos cerrados", mesa.totalPedidos)
+            textSize = 13f
             setTextColor(getColor(R.color.text_primary))
             setTypeface(typeface, android.graphics.Typeface.BOLD)
         }
 
-        val tvPedidos = TextView(this).apply {
-            text = String.format(Locale.getDefault(), "%d pedidos completados", mesa.totalPedidos)
-            textSize = 12f
-            setTextColor(getColor(R.color.text_secondary))
-        }
-
-        infoLayout.addView(tvMesa)
         infoLayout.addView(tvPedidos)
 
         val tvTotal = TextView(this).apply {
             text = String.format(Locale.getDefault(), "S/ %.2f", mesa.totalMesa)
             textSize = 15f
-            setTextColor(getColor(R.color.role_mozo_text))
+            setTextColor(getColor(R.color.status_libre))
             setTypeface(typeface, android.graphics.Typeface.BOLD)
         }
 
+        row.addView(tvMesaBadge)
         row.addView(infoLayout)
         row.addView(tvTotal)
 
-        return row
+        card.addView(row)
+        return card
     }
 }

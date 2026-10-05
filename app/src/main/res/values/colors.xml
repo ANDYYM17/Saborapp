@@ -1,58 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Paleta Cálida SaborApp (Pollería El Buen Sabor) -->
-    <color name="primary">#E65100</color>
-    <color name="primary_dark">#BF360C</color>
-    <color name="primary_light">#FF8A50</color>
-    <color name="primary_container">#FFEBE0</color>
+    <!-- Paleta Corporativa y Gastronómica SaborApp -->
+    <color name="primary">#EA580C</color>
+    <color name="primary_dark">#C2410C</color>
+    <color name="primary_light">#FB923C</color>
+    <color name="primary_container">#FFEDD5</color>
     <color name="on_primary">#FFFFFF</color>
-    <color name="on_primary_container">#3E1000</color>
+    <color name="on_primary_container">#7C2D12</color>
 
-    <color name="secondary">#D32F2F</color>
-    <color name="secondary_dark">#9A0007</color>
-    <color name="secondary_light">#FF6659</color>
-    <color name="secondary_container">#FFEDEA</color>
+    <color name="secondary">#DC2626</color>
+    <color name="secondary_dark">#991B1B</color>
+    <color name="secondary_light">#F87171</color>
+    <color name="secondary_container">#FEE2E2</color>
     <color name="on_secondary">#FFFFFF</color>
 
-    <color name="background">#FBF8F6</color>
+    <!-- Fondos Limpios y Modernos -->
+    <color name="background">#F8FAFC</color>
     <color name="surface">#FFFFFF</color>
-    <color name="surface_variant">#F5EBE6</color>
-    <color name="card_stroke">#F0E0D6</color>
-    <color name="card_stroke_active">#FFCCBC</color>
+    <color name="surface_variant">#FFFFFF</color>
+    <color name="card_stroke">#E2E8F0</color>
+    <color name="card_stroke_active">#FDBA74</color>
 
-    <!-- Textos -->
-    <color name="text_primary">#1F2937</color>
-    <color name="text_secondary">#6B7280</color>
-    <color name="text_hint">#9CA3AF</color>
+    <!-- Textos de Alto Contraste -->
+    <color name="text_primary">#0F172A</color>
+    <color name="text_secondary">#64748B</color>
+    <color name="text_hint">#94A3B8</color>
 
     <!-- Badges de Rol -->
     <color name="role_admin_bg">#FEE2E2</color>
     <color name="role_admin_text">#DC2626</color>
-    <color name="role_mozo_bg">#DBEAFE</color>
-    <color name="role_mozo_text">#1D4ED8</color>
+    <color name="role_admin_border">#FECACA</color>
+    
+    <color name="role_mozo_bg">#EFF6FF</color>
+    <color name="role_mozo_text">#2563EB</color>
+    <color name="role_mozo_border">#BFDBFE</color>
 
-    <!-- Estados y Alertas -->
+    <!-- Estados de Mesas -->
     <color name="status_libre">#16A34A</color>
-    <color name="status_libre_bg">#DCFCE7</color>
-    <color name="status_libre_border">#86EFAC</color>
-    <color name="status_ocupada">#DC2626</color>
-    <color name="status_ocupada_bg">#FEE2E2</color>
-    <color name="status_ocupada_border">#FCA5A5</color>
+    <color name="status_libre_bg">#F0FDF4</color>
+    <color name="status_libre_border">#BBF7D0</color>
+    <color name="status_libre_glow">#DCFCE7</color>
 
-    <!-- WhatsApp & Acciones -->
-    <color name="whatsapp_green">#25D366</color>
-    <color name="whatsapp_green_dark">#128C7E</color>
-    <color name="whatsapp_bg">#E8F8F0</color>
+    <color name="status_ocupada">#EA580C</color>
+    <color name="status_ocupada_bg">#FFF7ED</color>
+    <color name="status_ocupada_border">#FED7AA</color>
+    <color name="status_ocupada_glow">#FFEDD5</color>
 
-    <!-- Medallas Ranking -->
+    <!-- WhatsApp -->
+    <color name="whatsapp_green">#16A34A</color>
+    <color name="whatsapp_green_dark">#15803D</color>
+    <color name="whatsapp_bg">#F0FDF4</color>
+
+    <!-- Ranking Medallas -->
     <color name="rank_gold">#D97706</color>
     <color name="rank_gold_bg">#FEF3C7</color>
-    <color name="rank_silver">#4B5563</color>
-    <color name="rank_silver_bg">#E5E7EB</color>
-    <color name="rank_bronze">#92400E</color>
+    <color name="rank_gold_border">#FDE68A</color>
+
+    <color name="rank_silver">#475569</color>
+    <color name="rank_silver_bg">#F1F5F9</color>
+    <color name="rank_silver_border">#E2E8F0</color>
+
+    <color name="rank_bronze">#B45309</color>
     <color name="rank_bronze_bg">#FFEDD5</color>
+    <color name="rank_bronze_border">#FED7AA</color>
 
     <color name="error">#EF4444</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
 </resources>

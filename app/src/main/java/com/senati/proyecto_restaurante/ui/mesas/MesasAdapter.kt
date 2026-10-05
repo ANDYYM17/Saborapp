@@ -44,17 +44,17 @@ class MesasAdapter(
             binding.tvEstadoMesa.text = mesa.estado.uppercase()
 
             if (mesa.estado.equals("LIBRE", ignoreCase = true)) {
-                binding.tvEstadoMesa.setTextColor(
-                    ContextCompat.getColor(context, R.color.status_libre)
-                )
+                binding.tvEstadoMesa.setTextColor(ContextCompat.getColor(context, R.color.status_libre))
                 binding.tvEstadoMesa.setBackgroundResource(R.drawable.bg_status_libre)
                 binding.ivMesaIcon.setColorFilter(ContextCompat.getColor(context, R.color.status_libre))
+                binding.cardIconMesa.setCardBackgroundColor(ContextCompat.getColor(context, R.color.status_libre_bg))
+                binding.cardIconMesa.strokeColor = ContextCompat.getColor(context, R.color.status_libre_border)
             } else {
-                binding.tvEstadoMesa.setTextColor(
-                    ContextCompat.getColor(context, R.color.status_ocupada)
-                )
+                binding.tvEstadoMesa.setTextColor(ContextCompat.getColor(context, R.color.status_ocupada))
                 binding.tvEstadoMesa.setBackgroundResource(R.drawable.bg_status_ocupada)
                 binding.ivMesaIcon.setColorFilter(ContextCompat.getColor(context, R.color.status_ocupada))
+                binding.cardIconMesa.setCardBackgroundColor(ContextCompat.getColor(context, R.color.status_ocupada_bg))
+                binding.cardIconMesa.strokeColor = ContextCompat.getColor(context, R.color.status_ocupada_border)
             }
 
             binding.root.setOnClickListener {
